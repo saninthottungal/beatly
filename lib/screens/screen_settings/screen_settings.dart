@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:beatly/providers/settings_provider/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ScreenSettings extends StatelessWidget {
   const ScreenSettings({super.key});
@@ -13,15 +14,20 @@ class ScreenSettings extends StatelessWidget {
       ),
       //body
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Dark Theme",
+              "Dark theme",
               style: Theme.of(context).textTheme.titleLarge,
             ),
-            CupertinoSwitch(value: true, onChanged: (value) {})
+            Switch(
+                value: context.watch<ThemeProvider>().isDarkMode,
+                onChanged: (bool? value) {
+                  context.read<ThemeProvider>().setCurrentTheme =
+                      value ?? false;
+                }),
           ],
         ),
       ),
