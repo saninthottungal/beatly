@@ -1,6 +1,7 @@
 import 'package:beatly/providers/settings_provider/theme_provider.dart';
 import 'package:beatly/screens/screen_home/screen_home.dart';
 import 'package:beatly/screens/screen_settings/screen_settings.dart';
+import 'package:beatly/screens/screen_song/screen_song.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const ScreenHome(),
         '/settings': (context) => const ScreenSettings(),
+        '/song': (context) => const ScreenSong()
       },
     );
   }

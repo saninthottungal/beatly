@@ -16,53 +16,56 @@ class SongCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(10),
-          child: Text(
-            heading,
-            style: Theme.of(context).textTheme.headlineSmall,
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pushNamed('/song'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              heading,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
           ),
-        ),
-        LimitedBox(
-          maxHeight: height * 0.36,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 5,
-                    ),
-                    width: 190,
-                    height: height * 0.27,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      image: DecorationImage(
-                        image: AssetImage(imagePath),
-                        fit: BoxFit.cover,
+          LimitedBox(
+            maxHeight: height * 0.36,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 5,
+                      ),
+                      width: 190,
+                      height: height * 0.27,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        image: DecorationImage(
+                          image: AssetImage(imagePath),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  Text(
-                    artist,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  )
-                ],
-              );
-            },
-            itemCount: 10,
-          ),
-        )
-      ],
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    Text(
+                      artist,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    )
+                  ],
+                );
+              },
+              itemCount: 10,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

@@ -14,7 +14,7 @@ class DrawerComponentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.only(top: 20, bottom: 20, left: 35),
