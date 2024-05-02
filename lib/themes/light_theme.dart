@@ -23,13 +23,13 @@ ThemeData lightTheme = ThemeData(
   ),
   //textThemes
   textTheme: const TextTheme(
-    //artist name
+    //artist name,artist name is song screen
     bodyMedium: TextStyle(),
     //settings theme,
     labelLarge: TextStyle(
       fontSize: 20,
     ),
-    //home widget heading,
+    //home widget heading, song screen title
     headlineSmall: TextStyle(
       letterSpacing: 1,
       fontWeight: FontWeight.w500,
