@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: context.watch<ThemeProvider>().currentTheme,
-      //darkTheme: darkTheme,
       routes: {
         '/': (context) => const ScreenHome(),
         '/settings': (context) => const ScreenSettings(),

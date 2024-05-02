@@ -10,7 +10,7 @@ class ScreenHome extends StatelessWidget {
     return Scaffold(
       //appBar
       appBar: AppBar(
-        title: const Text("BEATLY"),
+        title: const Text("BEAT.LY"),
       ),
       //drawer
       drawer: const CustomDrawerWidget(),

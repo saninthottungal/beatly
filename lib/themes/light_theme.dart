@@ -24,7 +24,7 @@ ThemeData lightTheme = ThemeData(
   //textThemes
   textTheme: const TextTheme(
     headlineSmall: TextStyle(
-      letterSpacing: 4,
+      letterSpacing: 2,
     ),
     titleMedium: TextStyle(
       letterSpacing: 2,
