@@ -21,23 +21,38 @@ ThemeData darkTheme = ThemeData(
       color: Colors.white,
     ),
   ),
-//textThemes
+  //textThemes
   textTheme: const TextTheme(
+    //artist name
+    bodyMedium: TextStyle(),
+    //settings theme,
+    labelLarge: TextStyle(
+      fontSize: 20,
+    ),
+    //home widget heading,
     headlineSmall: TextStyle(
-      letterSpacing: 4,
+      letterSpacing: 1,
+      fontWeight: FontWeight.w500,
     ),
+
+    //song title,
     titleMedium: TextStyle(
-      letterSpacing: 2,
-    ),
-    titleLarge: TextStyle(
       letterSpacing: 1,
     ),
+    //drawer text,
+    titleLarge: TextStyle(
+      letterSpacing: 2,
+      fontSize: 24,
+    ),
+  ),
+  iconTheme: IconThemeData(
+    color: Colors.red.shade300,
   ),
 
   //otherThemes
   colorScheme: ColorScheme.dark(
-    primary: Colors.yellow.shade500,
-    secondary: Colors.blue.shade500,
+    primary: Colors.red.shade500,
+    secondary: Colors.grey.shade400,
     tertiary: Colors.blue.shade500,
     inversePrimary: Colors.blue.shade500,
   ),

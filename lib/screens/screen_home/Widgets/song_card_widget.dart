@@ -27,7 +27,7 @@ class SongCardWidget extends StatelessWidget {
           ),
         ),
         LimitedBox(
-          maxHeight: height * 0.38,
+          maxHeight: height * 0.36,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
@@ -41,7 +41,7 @@ class SongCardWidget extends StatelessWidget {
                     width: 190,
                     height: height * 0.27,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(8),
                       image: DecorationImage(
                         image: AssetImage(imagePath),
                         fit: BoxFit.cover,

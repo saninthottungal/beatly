@@ -29,7 +29,7 @@ ThemeData lightTheme = ThemeData(
     labelLarge: TextStyle(
       fontSize: 20,
     ),
-    //recently played,
+    //home widget heading,
     headlineSmall: TextStyle(
       letterSpacing: 1,
       fontWeight: FontWeight.w500,
@@ -37,13 +37,16 @@ ThemeData lightTheme = ThemeData(
 
     //song title,
     titleMedium: TextStyle(
-      letterSpacing: 2,
+      letterSpacing: 1,
     ),
     //drawer text,
     titleLarge: TextStyle(
       letterSpacing: 2,
       fontSize: 24,
     ),
+  ),
+  iconTheme: IconThemeData(
+    color: Colors.red.shade300,
   ),
   //otherThemes
   colorScheme: ColorScheme.light(
