@@ -1,4 +1,5 @@
 import 'package:beatly/screens/screen_home/screen_home.dart';
+import 'package:beatly/screens/screen_settings/screen_settings.dart';
 import 'package:beatly/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: lightTheme,
       //darkTheme: darkTheme,
-      home: const ScreenHome(),
+      routes: {
+        '/': (context) => const ScreenHome(),
+        '/settings': (context) => const ScreenSettings(),
+      },
     );
   }
 }
