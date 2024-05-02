@@ -12,7 +12,7 @@ ThemeData lightTheme = ThemeData(
       elevation: 0,
       //appbarTextStyle
       titleTextStyle: TextStyle(
-        letterSpacing: 12,
+        letterSpacing: 10,
         fontSize: 22,
         color: Colors.black,
       ),
@@ -23,10 +23,15 @@ ThemeData lightTheme = ThemeData(
     ),
     //textThemes
     textTheme: const TextTheme(
-      headlineSmall: TextStyle(
-        letterSpacing: 5,
-      ),
-    ),
+        headlineSmall: TextStyle(
+          letterSpacing: 4,
+        ),
+        titleMedium: TextStyle(
+          letterSpacing: 2,
+        ),
+        titleLarge: TextStyle(
+          letterSpacing: 1,
+        )),
     //otherThemes
     colorScheme: ColorScheme.light(
       background: Colors.white,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ScreenSettings extends StatelessWidget {
@@ -5,9 +6,24 @@ class ScreenSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("settings"),
+    return Scaffold(
+      //appbar
+      appBar: AppBar(
+        title: const Text("SETTINGS"),
+      ),
+      //body
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Dark Theme",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            CupertinoSwitch(value: true, onChanged: (value) {})
+          ],
+        ),
       ),
     );
   }
