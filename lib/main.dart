@@ -1,5 +1,4 @@
 import 'package:beatly/screens/screen_home/screen_home.dart';
-import 'package:beatly/themes/dark_theme.dart';
 import 'package:beatly/themes/light_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: lightTheme,
-      darkTheme: darkTheme,
+      //darkTheme: darkTheme,
       home: const ScreenHome(),
     );
   }
