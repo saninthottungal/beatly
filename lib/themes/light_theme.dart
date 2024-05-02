@@ -23,14 +23,26 @@ ThemeData lightTheme = ThemeData(
   ),
   //textThemes
   textTheme: const TextTheme(
-    headlineSmall: TextStyle(
-      letterSpacing: 2,
+    //artist name
+    bodyMedium: TextStyle(),
+    //settings theme,
+    labelLarge: TextStyle(
+      fontSize: 20,
     ),
+    //recently played,
+    headlineSmall: TextStyle(
+      letterSpacing: 1,
+      fontWeight: FontWeight.w500,
+    ),
+
+    //song title,
     titleMedium: TextStyle(
       letterSpacing: 2,
     ),
+    //drawer text,
     titleLarge: TextStyle(
-      letterSpacing: 1,
+      letterSpacing: 2,
+      fontSize: 24,
     ),
   ),
   //otherThemes

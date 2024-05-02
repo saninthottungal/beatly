@@ -12,8 +12,8 @@ class CustomDrawerWidget extends StatelessWidget {
         children: [
           const DrawerHeader(
             child: Icon(
-              Icons.music_note,
-              size: 50,
+              Icons.music_note_outlined,
+              size: 70,
             ),
           ),
           DrawerComponentWidget(

@@ -1,3 +1,4 @@
+import 'package:beatly/screens/screen_home/Widgets/song_card_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'Drawer/drawer.dart';
@@ -8,19 +9,34 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar
-      appBar: AppBar(
-        title: const Text("BEAT.LY"),
-      ),
-      //drawer
-      drawer: const CustomDrawerWidget(),
-      //body
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {},
-          child: const Text("data"),
+        //appBar
+        appBar: AppBar(
+          title: const Text("BEAT.LY"),
         ),
-      ),
-    );
+        //drawer
+        drawer: const CustomDrawerWidget(),
+        //body
+        body: ListView(
+          children: const [
+            SongCardWidget(
+              heading: 'Newly Added',
+              imagePath: 'assets/images/pakaliravukal.png',
+              title: 'Pakaliravukal',
+              artist: 'Sushin Shyam',
+            ),
+            SongCardWidget(
+              heading: 'Recently Played',
+              imagePath: 'assets/images/odimaga.png',
+              title: 'Odimaga',
+              artist: 'Sushin Shyam',
+            ),
+            SongCardWidget(
+              heading: 'Favorites',
+              imagePath: 'assets/images/chor.png',
+              title: 'Chor',
+              artist: 'Justh',
+            ),
+          ],
+        ));
   }
 }

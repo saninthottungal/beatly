@@ -20,7 +20,7 @@ class ScreenSettings extends StatelessWidget {
           children: [
             Text(
               "Dark theme",
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.labelLarge,
             ),
             Switch(
                 value: context.watch<ThemeProvider>().isDarkMode,

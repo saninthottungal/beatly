@@ -24,7 +24,7 @@ class DrawerComponentWidget extends StatelessWidget {
             const SizedBox(width: 20),
             Text(
               title,
-              style: Theme.of(context).textTheme.headlineSmall,
+              style: Theme.of(context).textTheme.titleLarge,
             )
           ],
         ),
