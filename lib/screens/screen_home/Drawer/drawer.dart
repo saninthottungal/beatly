@@ -24,7 +24,9 @@ class CustomDrawerWidget extends StatelessWidget {
           DrawerComponentWidget(
             icon: Icons.favorite,
             title: 'Favorites',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, '/favorites');
+            },
           ),
           DrawerComponentWidget(
             title: 'Settings',
