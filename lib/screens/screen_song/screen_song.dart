@@ -36,8 +36,6 @@ class ScreenSong extends StatelessWidget {
               return Slider(
                 value: provider.currentDuration.inMilliseconds.toDouble(),
                 max: provider.totalDuration.inMilliseconds.toDouble(),
-                secondaryTrackValue:
-                    provider.totalDuration.inMilliseconds.toDouble(),
                 onChanged: (value) {
                   provider.seek(value);
                 },

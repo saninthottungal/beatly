@@ -12,13 +12,30 @@ class SongProvider extends ChangeNotifier {
 
   final List<SongModel> constSongs = songs;
   int currentIndex = 0;
+  //currentDuration
+  Duration currentDuration = Duration.zero;
+  //total Duration
+  Duration totalDuration = Duration.zero;
+
+  //isLoop
+  bool isLoop = false;
+
+  set setisLoop(bool value) {
+    isLoop = value;
+    notifyListeners();
+  }
 
   //play song
   Future<void> play() async {
-    await audioPlayer.stop();
+    await stop();
     await audioPlayer.play(AssetSource(songs[currentIndex].songPath));
 
     notifyListeners();
+  }
+
+  //stop song
+  Future<void> stop() async {
+    await audioPlayer.stop();
   }
   //isPlayingBooleanGetter
 
@@ -36,26 +53,24 @@ class SongProvider extends ChangeNotifier {
     if (songs.length != currentIndex + 1) {
       currentIndex++;
       await play();
-      notifyListeners();
-    } else {
+    } else if (isLoop) {
       currentIndex = 0;
       await play();
+    } else {
+      //show no next songs available;
     }
+    notifyListeners();
   }
 
   //previous track
   previous() async {
     if (currentIndex != 0) {
-      await play();
       currentIndex--;
+      await play();
+
       notifyListeners();
     }
   }
-
-  //currentDuration
-  Duration currentDuration = Duration.zero;
-  //total Duration
-  Duration totalDuration = Duration.zero;
 
   //seek
   seek(double value) async {
