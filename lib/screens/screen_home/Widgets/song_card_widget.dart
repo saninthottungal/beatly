@@ -1,4 +1,7 @@
+import 'package:beatly/providers/song_provider/song_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
 class SongCardWidget extends StatelessWidget {
   const SongCardWidget({
@@ -16,24 +19,27 @@ class SongCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    return GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed('/song'),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              heading,
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: Text(
+            heading,
+            style: Theme.of(context).textTheme.headlineSmall,
           ),
-          LimitedBox(
-            maxHeight: height * 0.36,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return Column(
+        ),
+        LimitedBox(
+          maxHeight: height * 0.36,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () async {
+                  Navigator.of(context).pushNamed('/song');
+                  await context.read<SongProvider>().play();
+                },
+                child: Column(
                   children: [
                     Container(
                       margin: const EdgeInsets.symmetric(
@@ -59,13 +65,13 @@ class SongCardWidget extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyMedium,
                     )
                   ],
-                );
-              },
-              itemCount: 10,
-            ),
-          )
-        ],
-      ),
+                ),
+              );
+            },
+            itemCount: 10,
+          ),
+        )
+      ],
     );
   }
 }

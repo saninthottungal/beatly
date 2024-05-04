@@ -1,4 +1,3 @@
-import 'package:beatly/providers/playlist_provider/playlist_provider.dart';
 import 'package:beatly/providers/settings_provider/theme_provider.dart';
 import 'package:beatly/providers/song_provider/song_provider.dart';
 import 'package:beatly/screens/screen_favorites/screen_favorites.dart';
@@ -17,9 +16,6 @@ void main(List<String> args) {
         ),
         ChangeNotifierProvider(
           create: (context) => SongProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => PlayListProvider(),
         ),
       ],
       child: const MyApp(),
