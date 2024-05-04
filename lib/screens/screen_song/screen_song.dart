@@ -1,6 +1,5 @@
 import 'package:beatly/screens/screen_song/widgets/custom_song_container.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'widgets/fav_repeat_shuffle.dart';
 import 'widgets/play_widget.dart';
 import 'widgets/song_title_artist.dart';
@@ -36,6 +35,7 @@ class ScreenSong extends StatelessWidget {
               secondaryTrackValue: 1,
               onChanged: (value) {},
             ),
+            //previous,play,next
             const PlayWidget(),
           ],
         ),
