@@ -48,6 +48,12 @@ ThemeData lightTheme = ThemeData(
   iconTheme: IconThemeData(
     color: Colors.red.shade300,
   ),
+  sliderTheme: const SliderThemeData(
+    thumbShape: RoundSliderThumbShape(
+      enabledThumbRadius: 0,
+      disabledThumbRadius: 0,
+    ),
+  ),
   //otherThemes
   colorScheme: ColorScheme.light(
     primary: Colors.red.shade500,

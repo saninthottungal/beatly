@@ -4,7 +4,11 @@ import 'package:beatly/models/song_model.dart';
 import 'package:flutter/material.dart';
 
 class SongProvider extends ChangeNotifier {
-  final audioPlayer = AudioPlayer();
+  final AudioPlayer audioPlayer = AudioPlayer();
+
+  SongProvider() {
+    listenForDurations();
+  }
 
   final List<SongModel> constSongs = songs;
   int currentIndex = 0;
@@ -52,5 +56,35 @@ class SongProvider extends ChangeNotifier {
       currentIndex--;
       notifyListeners();
     }
+  }
+
+  //currentDuration
+  Duration currentDuration = Duration.zero;
+  //total Duration
+  Duration totalDuration = Duration.zero;
+
+  //seek
+  seek(double value) async {
+    final duration = Duration(milliseconds: value.toInt());
+
+    await audioPlayer.seek(duration);
+    notifyListeners();
+  }
+
+  void listenForDurations() {
+    audioPlayer.onDurationChanged.listen((durationChanged) {
+      totalDuration = durationChanged;
+      notifyListeners();
+    });
+
+    audioPlayer.onPlayerComplete.listen((event) {
+      next();
+      notifyListeners();
+    });
+
+    audioPlayer.onPositionChanged.listen((duration) {
+      currentDuration = duration;
+      notifyListeners();
+    });
   }
 }

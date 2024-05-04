@@ -1,5 +1,7 @@
+import 'package:beatly/providers/song_provider/song_provider.dart';
 import 'package:beatly/screens/screen_song/widgets/custom_song_container.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'widgets/fav_repeat_shuffle.dart';
 import 'widgets/play_widget.dart';
 import 'widgets/song_title_artist.dart';
@@ -30,12 +32,18 @@ class ScreenSong extends StatelessWidget {
             //favourite, shuffle,repeat row
             const FavRepeatShuffleRow(),
             //slider
-            Slider(
-              value: 0.5,
-              secondaryTrackValue: 1,
-              onChanged: (value) {},
-            ),
-            //previous,play,next
+            Consumer<SongProvider>(builder: (context, provider, _) {
+              return Slider(
+                value: provider.currentDuration.inMilliseconds.toDouble(),
+                max: provider.totalDuration.inMilliseconds.toDouble(),
+                secondaryTrackValue:
+                    provider.totalDuration.inMilliseconds.toDouble(),
+                onChanged: (value) {
+                  provider.seek(value);
+                },
+              );
+            }),
+            //previous,play,next // provider done
             const PlayWidget(),
           ],
         ),
