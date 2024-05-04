@@ -13,46 +13,40 @@ class SongProvider extends ChangeNotifier {
   final List<SongModel> constSongs = songs;
   int currentIndex = 0;
 
-  //isPlayingBoolean
-  bool isPlaying = false;
-
   //play song
   Future<void> play() async {
     await audioPlayer.stop();
     await audioPlayer.play(AssetSource(songs[currentIndex].songPath));
-    isPlaying = true;
+
     notifyListeners();
   }
+  //isPlayingBooleanGetter
+
+  bool get isPlaying => audioPlayer.state == PlayerState.paused ? false : true;
 
   //pause song
   Future<void> pauseNResume() async {
-    if (isPlaying) {
-      await audioPlayer.pause();
-      isPlaying = false;
-    } else {
-      await audioPlayer.resume();
-      isPlaying = true;
-    }
+    isPlaying ? await audioPlayer.pause() : await audioPlayer.resume();
     notifyListeners();
   }
 
   //next track
 
-  next() {
+  next() async {
     if (songs.length != currentIndex + 1) {
       currentIndex++;
-      play();
+      await play();
       notifyListeners();
     } else {
       currentIndex = 0;
-      play();
+      await play();
     }
   }
 
   //previous track
-  previous() {
+  previous() async {
     if (currentIndex != 0) {
-      play();
+      await play();
       currentIndex--;
       notifyListeners();
     }
