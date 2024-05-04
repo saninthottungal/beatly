@@ -4,13 +4,13 @@ List<SongModel> songs = [
   SongModel(
     name: "Istigfar",
     artist: "A.R. Rahman",
-    imagePath: 'assets/images/istigfar.png',
+    imagePath: 'assets/images/Istigfar.png',
     songPath: 'audio/Istigfar.mp3',
   ),
   SongModel(
-    name: 'Manickyachirakulla',
+    name: 'Manikya Chirakulla',
     artist: 'Bijibal',
-    imagePath: 'assets/images/ManikyaChirakulla.png',
+    imagePath: 'assets/images/Manikya Chirakulla.png',
     songPath: 'audio/Manickyachirakulla.mp3',
   ),
   SongModel(
