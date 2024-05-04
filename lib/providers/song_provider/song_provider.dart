@@ -21,7 +21,7 @@ class SongProvider extends ChangeNotifier {
   bool isLoop = false;
 
   set setisLoop(bool value) {
-    isLoop = value;
+    isLoop = !isLoop;
     notifyListeners();
   }
 

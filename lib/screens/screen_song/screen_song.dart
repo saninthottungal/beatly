@@ -2,7 +2,7 @@ import 'package:beatly/providers/song_provider/song_provider.dart';
 import 'package:beatly/screens/screen_song/widgets/custom_song_container.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'widgets/fav_repeat_shuffle.dart';
+import 'widgets/fav_repeat.dart';
 import 'widgets/play_widget.dart';
 import 'widgets/song_title_artist.dart';
 
@@ -30,7 +30,7 @@ class ScreenSong extends StatelessWidget {
             //song and artist column
             const SongTitleArtistWidget(),
             //favourite, shuffle,repeat row
-            const FavRepeatShuffleRow(),
+            const FavRepeatRow(),
             //slider
             Consumer<SongProvider>(builder: (context, provider, _) {
               return Slider(
