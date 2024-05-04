@@ -48,9 +48,9 @@ ThemeData lightTheme = ThemeData(
   iconTheme: IconThemeData(
     color: Colors.red.shade300,
   ),
-  sliderTheme: SliderThemeData(
-    inactiveTrackColor: Colors.red.shade300,
-    thumbShape: const RoundSliderThumbShape(
+  sliderTheme: const SliderThemeData(
+    inactiveTrackColor: Colors.grey,
+    thumbShape: RoundSliderThumbShape(
       enabledThumbRadius: 0,
       disabledThumbRadius: 0,
     ),

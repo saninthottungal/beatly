@@ -48,6 +48,13 @@ ThemeData darkTheme = ThemeData(
   iconTheme: IconThemeData(
     color: Colors.red.shade300,
   ),
+  sliderTheme: const SliderThemeData(
+    inactiveTrackColor: Colors.grey,
+    thumbShape: RoundSliderThumbShape(
+      enabledThumbRadius: 0,
+      disabledThumbRadius: 0,
+    ),
+  ),
 
   //otherThemes
   colorScheme: ColorScheme.dark(

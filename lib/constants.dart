@@ -10,7 +10,7 @@ List<SongModel> songs = [
   SongModel(
     name: 'Manickyachirakulla',
     artist: 'Bijibal',
-    imagePath: 'assets/images/Manickyachirakulla.png',
+    imagePath: 'assets/images/ManikyaChirakulla.png',
     songPath: 'audio/Manickyachirakulla.mp3',
   ),
   SongModel(
