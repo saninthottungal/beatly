@@ -1,6 +1,8 @@
 import 'package:beatly/constants.dart';
+import 'package:beatly/providers/song_provider/playlist_provider.dart';
 import 'package:beatly/screens/screen_home/Widgets/song_card_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'Drawer/drawer.dart';
 
@@ -27,10 +29,14 @@ class ScreenHome extends StatelessWidget {
               songs: songs,
               heading: 'Recently Played',
             ),
-            SongCardWidget(
-              songs: songs,
-              heading: 'Favorites',
-            ),
+            Consumer<PlayListProvider>(builder: (context, provider, _) {
+              return provider.favorites.isEmpty
+                  ? const SizedBox()
+                  : SongCardWidget(
+                      songs: provider.favorites,
+                      heading: 'Favorites',
+                    );
+            }),
           ],
         ));
   }
