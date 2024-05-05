@@ -1,4 +1,4 @@
-import 'package:beatly/providers/song_provider/song_provider.dart';
+import 'package:beatly/providers/song_provider/playlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +8,7 @@ class CustomSongConainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Consumer<SongProvider>(builder: (context, provider, _) {
+    return Consumer<PlayListProvider>(builder: (context, provider, _) {
       return Column(
         children: [
           Container(

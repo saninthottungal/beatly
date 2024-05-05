@@ -1,4 +1,4 @@
-import 'package:beatly/providers/song_provider/song_provider.dart';
+import 'package:beatly/providers/song_provider/playlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,9 +14,11 @@ class FavRepeatRow extends StatelessWidget {
       children: [
         IconButton(
           icon: Icon(Icons.repeat,
-              color: context.watch<SongProvider>().isLoop ? null : Colors.grey),
+              color: context.watch<PlayListProvider>().isLoop
+                  ? null
+                  : Colors.grey),
           onPressed: () {
-            context.read<SongProvider>().setisLoop = true;
+            context.read<PlayListProvider>().setIsLoop = true;
           },
         ),
         const Icon(Icons.favorite_border),

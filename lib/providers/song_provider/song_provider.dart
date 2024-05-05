@@ -1,34 +1,23 @@
+import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:beatly/constants.dart';
-import 'package:beatly/models/song_model.dart';
 import 'package:flutter/material.dart';
 
 class SongProvider extends ChangeNotifier {
   final AudioPlayer audioPlayer = AudioPlayer();
+  StreamController onSongComplete = StreamController();
 
   SongProvider() {
     listenForDurations();
   }
 
-  final List<SongModel> constSongs = songs;
-  int currentIndex = 0;
-  //currentDuration
   Duration currentDuration = Duration.zero;
   //total Duration
   Duration totalDuration = Duration.zero;
 
-  //isLoop
-  bool isLoop = false;
-
-  set setisLoop(bool value) {
-    isLoop = !isLoop;
-    notifyListeners();
-  }
-
   //play song
-  Future<void> play() async {
+  Future<void> play(String path) async {
     await stop();
-    await audioPlayer.play(AssetSource(songs[currentIndex].songPath));
+    await audioPlayer.play(AssetSource(path));
 
     notifyListeners();
   }
@@ -47,31 +36,6 @@ class SongProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  //next track
-
-  next() async {
-    if (songs.length != currentIndex + 1) {
-      currentIndex++;
-      await play();
-    } else if (isLoop) {
-      currentIndex = 0;
-      await play();
-    } else {
-      //show no next songs available;
-    }
-    notifyListeners();
-  }
-
-  //previous track
-  previous() async {
-    if (currentIndex != 0) {
-      currentIndex--;
-      await play();
-
-      notifyListeners();
-    }
-  }
-
   //seek
   seek(double value) async {
     final duration = Duration(milliseconds: value.toInt());
@@ -86,10 +50,7 @@ class SongProvider extends ChangeNotifier {
       notifyListeners();
     });
 
-    audioPlayer.onPlayerComplete.listen((event) {
-      next();
-      notifyListeners();
-    });
+    onSongComplete.addStream(audioPlayer.onPlayerComplete);
 
     audioPlayer.onPositionChanged.listen((duration) {
       currentDuration = duration;

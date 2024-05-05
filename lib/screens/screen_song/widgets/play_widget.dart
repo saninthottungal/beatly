@@ -1,3 +1,4 @@
+import 'package:beatly/providers/song_provider/playlist_provider.dart';
 import 'package:beatly/providers/song_provider/song_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,12 @@ class PlayWidget extends StatelessWidget {
             size: 50,
           ),
           onPressed: () async {
-            await context.read<SongProvider>().previous();
+            final playlistProvider = context.read<PlayListProvider>();
+            final songProvider = context.read<SongProvider>();
+            if (songProvider.currentDuration.inSeconds < 5) {
+              playlistProvider.previous();
+            }
+            await songProvider.play(playlistProvider.getCurrentSong.songPath);
           },
         ),
         IconButton(
@@ -36,7 +42,11 @@ class PlayWidget extends StatelessWidget {
             size: 50,
           ),
           onPressed: () async {
-            await context.read<SongProvider>().next();
+            final provider = context.read<PlayListProvider>();
+            provider.next();
+            await context
+                .read<SongProvider>()
+                .play(provider.getCurrentSong.songPath);
           },
         ),
       ],

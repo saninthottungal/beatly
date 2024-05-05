@@ -1,6 +1,6 @@
+import 'package:beatly/providers/song_provider/playlist_provider.dart';
 import 'package:beatly/providers/song_provider/song_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class SongCardWidget extends StatelessWidget {
@@ -37,7 +37,8 @@ class SongCardWidget extends StatelessWidget {
               return GestureDetector(
                 onTap: () async {
                   Navigator.of(context).pushNamed('/song');
-                  await context.read<SongProvider>().play();
+                  await context.read<SongProvider>().play(
+                      context.read<PlayListProvider>().getCurrentSong.songPath);
                 },
                 child: Column(
                   children: [
