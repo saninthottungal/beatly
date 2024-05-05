@@ -27,6 +27,7 @@ class PlayListProvider extends ChangeNotifier {
     } else if (isLoop) {
       currentIndex = 0;
     } else {
+      throw Exception("no next song available");
       //show no next songs available
     }
     notifyListeners();

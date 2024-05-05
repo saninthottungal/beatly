@@ -8,6 +8,17 @@ class PlayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        final provider = context.read<SongProvider>();
+        provider.onSongComplete.listen((event) {
+          playNext(context);
+        });
+      },
+    );
+    final isPlaying = context.select((SongProvider provider) {
+      return provider.isPlaying;
+    });
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -27,9 +38,7 @@ class PlayWidget extends StatelessWidget {
         ),
         IconButton(
           icon: Icon(
-            context.watch<SongProvider>().isPlaying
-                ? Icons.pause
-                : Icons.play_arrow_outlined,
+            isPlaying ? Icons.pause : Icons.play_arrow_outlined,
             size: 50,
           ),
           onPressed: () async {
@@ -41,15 +50,19 @@ class PlayWidget extends StatelessWidget {
             Icons.skip_next_outlined,
             size: 50,
           ),
-          onPressed: () async {
-            final provider = context.read<PlayListProvider>();
-            provider.next();
-            await context
-                .read<SongProvider>()
-                .play(provider.getCurrentSong.songPath);
-          },
+          onPressed: () => playNext(context),
         ),
       ],
     );
+  }
+
+  playNext(BuildContext context) async {
+    final provider = context.read<PlayListProvider>();
+    try {
+      provider.next();
+    } catch (_) {
+      return;
+    }
+    await context.read<SongProvider>().play(provider.getCurrentSong.songPath);
   }
 }

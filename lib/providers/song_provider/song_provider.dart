@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class SongProvider extends ChangeNotifier {
   final AudioPlayer audioPlayer = AudioPlayer();
-  StreamController onSongComplete = StreamController();
+  late Stream onSongComplete;
 
   SongProvider() {
     listenForDurations();
@@ -50,7 +50,7 @@ class SongProvider extends ChangeNotifier {
       notifyListeners();
     });
 
-    onSongComplete.addStream(audioPlayer.onPlayerComplete);
+    onSongComplete = audioPlayer.onPlayerComplete;
 
     audioPlayer.onPositionChanged.listen((duration) {
       currentDuration = duration;
