@@ -3,19 +3,16 @@ import 'package:beatly/providers/song_provider/song_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../models/song_model.dart';
+
 class SongCardWidget extends StatelessWidget {
   const SongCardWidget({
     super.key,
-    required this.title,
-    required this.artist,
-    required this.imagePath,
+    required this.songs,
     required this.heading,
   });
   final String heading;
-  final String title;
-  final String artist;
-  final String imagePath;
-
+  final List<SongModel> songs;
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -37,6 +34,7 @@ class SongCardWidget extends StatelessWidget {
               return GestureDetector(
                 onTap: () async {
                   Navigator.of(context).pushNamed('/song');
+                  context.read<PlayListProvider>().setIndex = index;
                   await context.read<SongProvider>().play(
                       context.read<PlayListProvider>().getCurrentSong.songPath);
                 },
@@ -52,24 +50,24 @@ class SongCardWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         image: DecorationImage(
-                          image: AssetImage(imagePath),
+                          image: AssetImage(songs[index].imagePath),
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
                     Text(
-                      title,
+                      songs[index].name,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
-                      artist,
+                      songs[index].artist,
                       style: Theme.of(context).textTheme.bodyMedium,
                     )
                   ],
                 ),
               );
             },
-            itemCount: 10,
+            itemCount: songs.length,
           ),
         )
       ],

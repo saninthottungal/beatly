@@ -1,3 +1,4 @@
+import 'package:beatly/constants.dart';
 import 'package:beatly/screens/screen_home/Widgets/song_card_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -17,24 +18,18 @@ class ScreenHome extends StatelessWidget {
         drawer: const CustomDrawerWidget(),
         //body
         body: ListView(
-          children: const [
+          children: [
             SongCardWidget(
+              songs: songs,
               heading: 'Newly Added',
-              imagePath: 'assets/images/pakaliravukal.png',
-              title: 'Pakaliravukal',
-              artist: 'Sushin Shyam',
             ),
             SongCardWidget(
+              songs: songs,
               heading: 'Recently Played',
-              imagePath: 'assets/images/odimaga.png',
-              title: 'Odimaga',
-              artist: 'Sushin Shyam',
             ),
             SongCardWidget(
+              songs: songs,
               heading: 'Favorites',
-              imagePath: 'assets/images/chor.png',
-              title: 'Chor',
-              artist: 'Justh',
             ),
           ],
         ));

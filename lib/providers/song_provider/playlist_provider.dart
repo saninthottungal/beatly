@@ -12,6 +12,11 @@ class PlayListProvider extends ChangeNotifier {
 
   //isLoop
 
+  set setIndex(int value) {
+    currentIndex = value;
+    notifyListeners();
+  }
+
   bool isLoop = false;
 
   //setIsLoop
