@@ -22,20 +22,19 @@ class PlayListProvider extends ChangeNotifier {
 
   //nextSong
   next() {
-    if (getCurrentSong != songs.last) {
+    if (currentIndex < songs.length - 1) {
       currentIndex++;
     } else if (isLoop) {
       currentIndex = 0;
     } else {
       throw Exception("no next song available");
-      //show no next songs available
     }
     notifyListeners();
   }
 
   //previouse song
   previous() {
-    if (getCurrentSong != songs.first) {
+    if (currentIndex > 0) {
       currentIndex--;
       notifyListeners();
     } else if (isLoop) {
