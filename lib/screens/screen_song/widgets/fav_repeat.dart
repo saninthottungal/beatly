@@ -9,6 +9,7 @@ class FavRepeatRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.watch<PlayListProvider>();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -21,7 +22,24 @@ class FavRepeatRow extends StatelessWidget {
             context.read<PlayListProvider>().setIsLoop = true;
           },
         ),
-        const Icon(Icons.favorite_border),
+        IconButton(
+          icon: Icon(
+            provider.constSongs[provider.currentIndex].isFavorite
+                ? Icons.favorite
+                : Icons.favorite_border,
+          ),
+          onPressed: () {
+            final provider = context.read<PlayListProvider>();
+            final currentSong = provider.constSongs[provider.currentIndex];
+            if (currentSong.isFavorite) {
+              provider.removeFavorites(currentSong);
+              currentSong.isFavorite = false;
+            } else {
+              provider.addFavorite(currentSong);
+              currentSong.isFavorite = true;
+            }
+          },
+        ),
       ],
     );
   }

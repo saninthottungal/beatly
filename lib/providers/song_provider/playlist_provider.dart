@@ -5,6 +5,20 @@ import '../../models/song_model.dart';
 
 class PlayListProvider extends ChangeNotifier {
   List<SongModel> constSongs = songs;
+  List<SongModel> favorites = [];
+
+  //add favorites
+  addFavorite(SongModel song) {
+    favorites.add(song);
+    notifyListeners();
+  }
+
+  //remove favorites
+
+  removeFavorites(SongModel song) {
+    favorites.remove(song);
+    notifyListeners();
+  }
 
   int currentIndex = 0;
   //get current song

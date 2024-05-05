@@ -6,17 +6,20 @@ List<SongModel> songs = [
     artist: "A.R. Rahman",
     imagePath: 'assets/images/Istigfar.png',
     songPath: 'audio/Istigfar.mp3',
+    isFavorite: false,
   ),
   SongModel(
     name: 'Manikya Chirakulla',
     artist: 'Bijibal',
     imagePath: 'assets/images/Manikya Chirakulla.png',
     songPath: 'audio/Manickyachirakulla.mp3',
+    isFavorite: false,
   ),
   SongModel(
     name: 'Neeyilla Neram',
     artist: 'Sooraj S Kurup',
     imagePath: 'assets/images/Neeyilla Neram.png',
     songPath: 'audio/Neeyilla Neram.mp3',
+    isFavorite: false,
   ),
 ];
